@@ -34,7 +34,7 @@ function handleLogin() {
 
     // Check demo credentials
     if (username === 'admin' && password === 'admin123') {
-        window.location.href = './pages/issues.html';
+        window.location.href = './pages/home.html';
     } else {
         authError.classList.add('show');
         usernameInput.classList.add('error');
