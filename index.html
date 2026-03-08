@@ -19,6 +19,54 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <section class="login-page">
+    <div class="login-card">
+
+        <!-- Logo -->
+        <div class="login-logo ">
+            <img src="./assets/github-logo.png" alt="" srcset="">
+        </div>
+
+        <!-- Title & Subtitle -->
+        <h1 class="login-title">GitHub Issues Tracker</h1>
+        <p class="login-subtitle">Sign in to manage your issues</p>
+
+        <!-- Username Field -->
+        <div class="field-group">
+            <label class="field-label" for="username">Username</label>
+            <input type="text" id="username" class="login-input" placeholder="Enter Username" autocomplete="username" />
+            <p class="hint-text">Default: admin</p>
+            <p class="error-msg" id="username-error">Please enter your username.</p>
+        </div>
+
+        <!-- Password Field -->
+        <div class="field-group">
+            <label class="field-label" for="password">Password</label>
+            <input type="password" id="password" class="login-input" placeholder="Enter Password" autocomplete="current-password" />
+            <p class="hint-text">Default: admin123</p>
+            <p class="error-msg" id="password-error">Please enter your password.</p>
+        </div>
+
+        <!-- Auth Error -->
+        <p class="error-msg auth-error" id="auth-error">Invalid username or password.</p>
+
+        <!-- Sign In Button -->
+        <button class="sign-in-btn" id="sign-in-btn">Sign In</button>
+
+        <!-- Divider -->
+        <div class="divider">OR</div>
+
+        <!-- Demo Credentials -->
+        <div class="demo-box">
+            <p class="demo-label">Demo Credentials:</p>
+            <div class="demo-credentials">
+                <p><span>Username:</span> admin</p>
+                <p><span>Password:</span> admin123</p>
+            </div>
+        </div>
+
+    </div>
+</section>
     <script src="./script/main.js"></script>
 </body>
 </html>
