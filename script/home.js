@@ -33,6 +33,31 @@ function applyFilter() {
     renderCards(filtered);
 }
 
+// Search
+let searchTimer;
+searchInput.addEventListener('input', () => {clearTimeout(searchTimer);
+    const q = searchInput.value.trim();
+    if (!q) {
+        applyFilter();
+        return;
+    }
+    searchTimer = setTimeout(() => fetchSearch(q), 400);
+});
+
+async function fetchSearch(q) {
+    showLoading();
+    try {
+        const res  = await fetch(`${API_BASE}/issues/search?q=${encodeURIComponent(q)}`);
+        const json = await res.json();
+        renderCards(json.data || []);
+    } catch (err) {
+        console.error('Search error:', err);
+        renderCards([]);
+    } finally {
+        hideLoading();
+    }
+}
+
 // Load Issues
 async function loadIssues() {
     showLoading();
@@ -101,7 +126,7 @@ function buildCard(issue) {
 }
 
 
-// Loading Helper
+// ── LOADING HELPERS ──
 function showLoading() {
     loadingSpinner.style.display = 'flex';
     issuesGrid.style.display = 'none';
@@ -135,13 +160,69 @@ function labelBadge(name) {
 function labelIcon(slug) {
     const icons = {
         'bug':              '<i class="fa-solid fa-bug"></i> ',
-        'help-wanted':      '<i class="fa-regular fa-handshake"></i> ',
+        'help-wanted':      '<i class="fa-solid fa-life-ring"></i> ',
         'enhancement':      '<i class="fa-solid fa-star"></i> ',
         'documentation':    '<i class="fa-solid fa-book"></i> ',
         'question':         '<i class="fa-solid fa-question"></i> ',
         'good-first-issue': '<i class="fa-solid fa-seedling"></i> ',
     };
     return icons[slug] || '';
+}
+
+// Show Card Details
+async function openPanel(issue) {
+    populatePanel(issue);
+    issuePanel.show();
+
+    // Fetch single issue for full detail
+    try {
+        const res  = await fetch(`${API_BASE}/issue/${issue.id}`);
+        const json = await res.json();
+        if (json.data && json.data.id) {
+            populatePanel(json.data);
+        }
+    } catch (err) {
+        console.error('Failed to load issue detail:', err);
+    }
+}
+
+function populatePanel(issue) {
+    const isOpen= issue.status === 'open';
+    const priority= (issue.priority || '').toLowerCase();
+    const labels= issue.labels || [];
+    const date= issue.createdAt ? new Date(issue.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })  : '';
+
+    // Title
+    document.getElementById('panelTitle').textContent = issue.title || '';
+
+    // Status badge
+    const badge = document.getElementById('panelStatusBadge');
+    badge.className = `panel-status-badge ${isOpen ? 'open' : 'closed'}`;
+    badge.textContent = isOpen ? 'Opened' : 'Closed';
+
+    // Author — "Opened by author"
+    document.getElementById('panelAuthor').textContent =
+        `${isOpen ? 'Opened' : 'Closed'} by ${escHtml(issue.author || 'unknown')}`;
+
+    // Date
+    document.getElementById('panelDate').textContent = date;
+
+    // Labels
+    document.getElementById('panelLabels').innerHTML =
+        labels.map(l => labelBadge(l)).join('');
+
+    // Description
+    document.getElementById('panelDescription').textContent =
+        issue.description || 'No description provided.';
+
+    // Assignee
+    document.getElementById('panelAssignee').textContent =
+        issue.assignee ? issue.assignee : 'Unassigned';
+
+    // Priority
+    const prioEl = document.getElementById('panelPriority');
+    prioEl.textContent = priority ? priority.toUpperCase() : '—';
+    prioEl.className   = `priority-badge priority-${priority || 'low'}`;
 }
 
 function openIcon() {
