@@ -46,8 +46,8 @@
 .search-box {
     display: flex;
     align-items: center;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
     overflow: hidden;
     background: #fff;
     transition: border-color 0.2s;
@@ -70,9 +70,9 @@
     border: none;
     outline: none;
     padding: 9px 14px 9px 8px;
-    font-size: 0.88rem;
+    font-size: 16px;
     font-family: 'Geist', sans-serif;
-    color: #374151;
+    color: #64748B;
     width: 240px;
     background: transparent;
 }
@@ -89,7 +89,7 @@
     background: #4A00FF;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -105,7 +105,7 @@
 /* Filter Tabs */
 .filter-card {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 14px 20px;
     display: flex;
     gap: 10px;
@@ -114,13 +114,15 @@
 }
 
 .tab-btn {
-    padding: 9px 24px;
-    border-radius: 8px;
+    width: 120px;
+    height: 40px;
+    padding: 0;
+    border-radius: 6px;
     border: 1.5px solid #e5e7eb;
     background: #ffffff;
-    font-size: 0.9rem;
+    font-size: 16px;
     font-weight: 500;
-    color: #374151;
+    color: #64748B;
     cursor: pointer;
     font-family: 'Geist', sans-serif;
     transition: all 0.15s;
@@ -143,8 +145,19 @@
 .issues-section {
     box-shadow: 0 1px 3px rgba(0,0,0,0.07);
     background: #e5e7eb;
-    border-radius: 12px;
+    border-radius: 6px;
     overflow: hidden;
+}
+
+.issues-aperture {
+    background: #ece4ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .issues-header {
@@ -163,13 +176,14 @@
 }
 
 .issues-count-text {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     color: #1f2937;
 }
 
 .issues-subtext {
-    font-size: 0.875rem;
+    font-size: 16px;
+    font-weight: 400;
     color: #64748b;
     margin-top: 2px;
 }
@@ -184,7 +198,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.875rem;
+    font-size: 16px;
     color: #374151;
     font-weight: 500;
 }
@@ -305,30 +319,35 @@
 }
 
 .card-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 3px 9px;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 6px 18px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-.label-bug              { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
-.label-help-wanted      { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
-.label-enhancement      { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
-.label-documentation    { background: #ede9fe; color: #7c3aed; border: 1px solid #ddd6fe; }
-.label-question         { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
-.label-duplicate        { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
-.label-wontfix          { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
-.label-invalid          { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8; }
-.label-good-first-issue { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
-.label-default          { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+.label-bug              { background: #fee2e2; color: #dc2626; border: 2px solid #fca5a5; }
+.label-help-wanted      { background: #fef3c7; color: #b45309; border: 2px solid #fcd34d; }
+.label-enhancement      { background: #dcfce7; color: #16a34a; border: 2px solid #86efac; }
+.label-documentation    { background: #ede9fe; color: #7c3aed; border: 2px solid #c4b5fd; }
+.label-question         { background: #dbeafe; color: #1d4ed8; border: 2px solid #93c5fd; }
+.label-duplicate        { background: #f3f4f6; color: #374151; border: 2px solid #d1d5db; }
+.label-wontfix          { background: #f3f4f6; color: #374151; border: 2px solid #d1d5db; }
+.label-invalid          { background: #fce7f3; color: #be185d; border: 2px solid #f9a8d4; }
+.label-good-first-issue { background: #ecfeff; color: #0e7490; border: 2px solid #67e8f9; }
+.label-default          { background: #f3f4f6; color: #374151; border: 2px solid #d1d5db; }
 
 /* Card footer */
 .card-footer {
-    border-top: 1px solid #f3f4f6;
-    padding-top: 10px;
+    border-top: 2px solid #e5e7eb;
+    padding-top: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 12px;
+    margin-left: -16px;
+    margin-right: -16px;
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -347,8 +366,8 @@
 /* Panel Section */
 .panel-content-box {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 32px 32px 24px;
+    border-radius: 12px;
+    padding: 32px 32px 32px;
     width: 100%;
     max-width: 680px;
     position: relative;
@@ -359,14 +378,14 @@
     align-items: center;
     padding: 5px 14px;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
 }
-.panel-status-badge.open   { background: #22c55e; color: #ffffff; }
-.panel-status-badge.closed { background: #a855f7; color: #ffffff; }
+.panel-status-badge.open   { background: #00A96E; color: #ffffff; }
+.panel-status-badge.closed { background: #EF4444; color: #ffffff; }
 
 .panel-title {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 700;
     color: #111827;
     line-height: 1.3;
@@ -383,11 +402,12 @@
 
 .panel-meta-dot {
     color: #9ca3af;
-    font-size: 0.85rem;
+    font-size: 1.05rem;
 }
 
 .panel-meta-text {
-    font-size: 0.88rem;
+    font-size: 12px;
+    font-weight: 400;
     color: #6b7280;
 }
 
@@ -399,8 +419,9 @@
 }
 
 .panel-description {
-    font-size: 1rem;
-    color: #374151;
+    font-size: 16px;
+    font-weight: 400;
+    color: #64748B;
     line-height: 1.7;
     margin-bottom: 24px;
 }
@@ -408,7 +429,7 @@
 .panel-info-panel {
     display: flex;
     align-items: flex-start;
-    gap: 60px;
+    gap: 160px;
     background: #f9fafb;
     border-radius: 10px;
     padding: 20px 24px;
@@ -422,21 +443,21 @@
 }
 
 .panel-item-label {
-    font-size: 0.85rem;
-    color: #6b7280;
+    font-size: 16px;
+    color: #64748B;
 }
 
 .panel-item-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
 }
 
 .priority-badge {
     display: inline-block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 5px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 8px;
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.4px;
