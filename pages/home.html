@@ -22,22 +22,22 @@
 <!-- Navbar -->
 <header>
     <nav class="navbar-wrapper">
-        <div class="navbar-inner">
+        <div class="navbar-inner flex-col sm:flex-row gap-2 sm:gap-0 py-3 sm:py-0 h-auto sm:h-[75px]">
             <!-- Logo Section -->
             <div class="nav-logo">
                 <img src="../assets/github-logo.png" class="w-7 h-7" alt="GitHub Logo">
-                <span class="nav-title">GitHub Issues Tracker</span>
+                <span class="nav-title text-sm sm:text-[1.05rem]">GitHub Issues Tracker</span>
             </div>
             <!-- Searchbar -->
-            <div class="nav-actions">
-                <label class="search-box">
+            <div class="nav-actions w-full sm:w-auto">
+                <label class="search-box flex-1 sm:flex-none">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="search-icon-svg">
                         <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input type="search" id="searchInput" placeholder="Search issues..." autocomplete="off" />
+                    <input type="search" id="searchInput" placeholder="Search issues..." autocomplete="off" class="w-full sm:w-[180px] lg:w-[240px]" />
                 </label>
                 <button class="new-issue-btn" id="newIssueBtn">
                     <i class="fa-solid fa-plus"></i> New Issue
@@ -49,33 +49,33 @@
 
 <!-- Main -->
 <main>
-    <section class="container mx-auto py-10 px-4">
+    <section class="container mx-auto py-6 sm:py-10 px-4">
         <!-- Filter Tabs -->
         <div class="filter-card">
-            <button class="tab-btn tab-active" data-filter="all" id="allBtn">All</button>
-            <button class="tab-btn" data-filter="open" id="openBtn">Open</button>
-            <button class="tab-btn" data-filter="closed" id="closedBtn">Closed</button>
+            <button class="tab-btn tab-active flex-1 sm:flex-none sm:w-[120px]" data-filter="all" id="allBtn">All</button>
+            <button class="tab-btn flex-1 sm:flex-none sm:w-[120px]" data-filter="open" id="openBtn">Open</button>
+            <button class="tab-btn flex-1 sm:flex-none sm:w-[120px]" data-filter="closed" id="closedBtn">Closed</button>
         </div>
 
         <!-- Issues Section -->
         <div class="issues-section">
             <!-- Issues Header -->
-            <div class="issues-header">
+            <div class="issues-header flex-wrap gap-3">
                 <div class="issues-header-left">
-                    <div class="issues-aperture">
-                        <img src="../assets/Aperture.png" alt="" class="w-[28px] h-[28px]">
+                    <div class="issues-aperture w-10 h-10 sm:w-[50px] sm:h-[50px]">
+                        <img src="../assets/Aperture.png" alt="" class="w-[20px] h-[20px] sm:w-[28px] sm:h-[28px]">
                     </div>
                     <div>
-                        <h2 id="issueCount" class="issues-count-text">0 Issues</h2>
-                        <p class="issues-subtext">Track and manage your project issues</p>
+                        <h2 id="issueCount" class="issues-count-text text-base sm:text-xl">0 Issues</h2>
+                        <p class="issues-subtext text-xs sm:text-base">Track and manage your project issues</p>
                     </div>
                 </div>
                 <div class="issues-legend">
-                        <span class="legend-item">
+                        <span class="legend-item text-xs sm:text-base">
                             <i class="fa-solid fa-circle text-green-500 text-xs"></i>
                             <span class="mb-0.5">Open</span>
                         </span>
-                    <span class="legend-item">
+                    <span class="legend-item text-xs sm:text-base">
                             <i class="fa-solid fa-circle text-purple-500 text-xs"></i>
                             <span class="mb-0.5">Closed</span>
                         </span>
@@ -94,7 +94,7 @@
             </div>
 
             <!-- Cards Grid -->
-            <div id="issuesGrid" class="issues-grid">
+            <div id="issuesGrid" class="issues-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <!-- Injected by JS -->
             </div>
 
@@ -105,12 +105,12 @@
 <section>
     <!-- Issue Detail Panel -->
     <dialog id="issuePanel" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box panel-content-box">
+        <div class="modal-box panel-content-box p-5 sm:p-8">
             <!-- Title -->
-            <h2 id="panelTitle" class="panel-title"></h2>
+            <h2 id="panelTitle" class="panel-title text-lg sm:text-2xl"></h2>
 
             <!-- Status Badge + Meta row -->
-            <div class="panel-meta">
+            <div class="panel-meta flex-wrap">
                 <span id="panelStatusBadge" class="panel-status-badge"></span>
                 <span class="panel-meta-dot">•</span>
                 <span id="panelAuthor" class="panel-meta-text"></span>
@@ -122,16 +122,16 @@
             <div id="panelLabels" class="panel-labels"></div>
 
             <!-- Description -->
-            <p id="panelDescription" class="panel-description"></p>
+            <p id="panelDescription" class="panel-description text-sm sm:text-base"></p>
 
             <!-- Info Panel -->
-            <div class="panel-info-panel">
+            <div class="panel-info-panel flex-wrap sm:flex-nowrap gap-8 sm:gap-[160px]">
                 <div class="panel-item">
-                    <p class="panel-item-label">Assignee:</p>
-                    <p id="panelAssignee" class="panel-item-value"></p>
+                    <p class="panel-item-label text-sm sm:text-base">Assignee:</p>
+                    <p id="panelAssignee" class="panel-item-value text-sm sm:text-base"></p>
                 </div>
                 <div class="panel-item">
-                    <p class="panel-item-label">Priority:</p>
+                    <p class="panel-item-label text-sm sm:text-base">Priority:</p>
                     <span id="panelPriority" class="priority-badge"></span>
                 </div>
             </div>
