@@ -85,6 +85,53 @@
     </section>
 </main>
 
+<section>
+    <!-- Issue Detail Panel -->
+    <dialog id="issuePanel" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box panel-content-box">
+            <!-- Title -->
+            <h2 id="panelTitle" class="panel-title"></h2>
+
+            <!-- Status Badge + Meta row -->
+            <div class="panel-meta">
+                <span id="panelStatusBadge" class="panel-status-badge"></span>
+                <span class="panel-meta-dot">•</span>
+                <span id="panelAuthor" class="panel-meta-text"></span>
+                <span class="panel-meta-dot">•</span>
+                <span id="panelDate" class="panel-meta-text"></span>
+            </div>
+
+            <!-- Labels -->
+            <div id="panelLabels" class="panel-labels"></div>
+
+            <!-- Description -->
+            <p id="panelDescription" class="panel-description"></p>
+
+            <!-- Info Panel -->
+            <div class="panel-info-panel">
+                <div class="panel-item">
+                    <p class="panel-item-label">Assignee:</p>
+                    <p id="panelAssignee" class="panel-item-value"></p>
+                </div>
+                <div class="panel-item">
+                    <p class="panel-item-label">Priority:</p>
+                    <span id="panelPriority" class="priority-badge"></span>
+                </div>
+            </div>
+
+            <!-- Close Button -->
+            <div class="panel-close-row">
+                <form method="dialog">
+                    <button class="panel-close-btn">Close</button>
+                </form>
+            </div>
+
+        </div>
+        <!-- Backdrop click to close -->
+        <form method="dialog" class="modal-backdrop"><button>close</button></form>
+    </dialog>
+</section>
+
 <script src="../script/home.js"></script>
 </body>
 </html>
