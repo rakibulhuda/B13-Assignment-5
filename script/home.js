@@ -35,8 +35,17 @@ function applyFilter() {
 
 // Search
 let searchTimer;
-searchInput.addEventListener('input', () => {clearTimeout(searchTimer);
+searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
     const q = searchInput.value.trim();
+
+    // Select "All" tab when searching
+    if (q) {
+        currentFilter = 'all';
+        tabButton.forEach(b => b.classList.remove('tab-active'));
+        document.getElementById('allBtn').classList.add('tab-active');
+    }
+
     if (!q) {
         applyFilter();
         return;
@@ -126,7 +135,7 @@ function buildCard(issue) {
 }
 
 
-// ── LOADING HELPERS ──
+//  Loading spinner
 function showLoading() {
     loadingSpinner.style.display = 'flex';
     issuesGrid.style.display = 'none';
