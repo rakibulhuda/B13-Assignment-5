@@ -4,24 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Browser Icon -->
-    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
-    <title>Github Issue Tracker</title>
-    <!-- Google Font -->
+    <link rel="shortcut icon" href="../assets/github-logo.png" type="image/x-icon">
+    <title>GitHub Issues Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Internal CSS  -->
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- Tailwind & Daisy CSS -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/home.css">
 </head>
-<body>
-<section>
+<body class="bg-slate-100">
 
-</section>
-<script src="./script/home.js"></script>
+<!-- Navbar -->
+<header>
+    <nav class="navbar-wrapper">
+        <div class="navbar-inner">
+            <!-- Logo Section -->
+            <div class="nav-logo">
+                <img src="../assets/github-logo.png" class="w-7 h-7" alt="GitHub Logo">
+                <span class="nav-title">GitHub Issues Tracker</span>
+            </div>
+            <!-- Searchbar -->
+            <div class="nav-actions">
+                <label class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="search-icon-svg">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" id="searchInput" placeholder="Search issues..." autocomplete="off" />
+                </label>
+                <button class="new-issue-btn" id="newIssueBtn">
+                    <i class="fa-solid fa-plus"></i> New Issue
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Main -->
+<main>
+    <section class="container mx-auto py-10 px-4">
+        <!-- Filter Tabs -->
+        <div class="filter-card">
+            <button class="tab-btn tab-active" data-filter="all" id="allBtn">All</button>
+            <button class="tab-btn" data-filter="open" id="openBtn">Open</button>
+            <button class="tab-btn" data-filter="closed" id="closedBtn">Closed</button>
+        </div>
+
+        <!-- Issues Section -->
+        <div class="issues-section">
+            <!-- Issues Header -->
+            <div class="issues-header">
+                <div class="issues-header-left">
+                    <div class="issues-aperture">
+                        <img src="../assets/Aperture.png" alt="" class="w-10 h-10">
+                    </div>
+                    <div>
+                        <h2 id="issueCount" class="issues-count-text">0 Issues</h2>
+                        <p class="issues-subtext">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class="issues-legend">
+                        <span class="legend-item">
+                            <i class="fa-solid fa-circle text-green-500 text-xs"></i>
+                            <span>Open</span>
+                        </span>
+                    <span class="legend-item">
+                            <i class="fa-solid fa-circle text-purple-500 text-xs"></i>
+                            <span>Closed</span>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="../script/home.js"></script>
 </body>
 </html>
