@@ -53,12 +53,28 @@ searchInput.addEventListener('input', () => {
     searchTimer = setTimeout(() => fetchSearch(q), 400);
 });
 
+// async function fetchSearch(q) {
+//     showLoading();
+//     try {
+//         const res  = await fetch(`${API_BASE}/issues/search?q=${encodeURIComponent(q)}`);
+//         const json = await res.json();
+//         renderCards(json.data || []);
+//     } catch (err) {
+//         console.error('Search error:', err);
+//         renderCards([]);
+//     } finally {
+//         hideLoading();
+//     }
+// }
+
 async function fetchSearch(q) {
     showLoading();
     try {
-        const res  = await fetch(`${API_BASE}/issues/search?q=${encodeURIComponent(q)}`);
-        const json = await res.json();
-        renderCards(json.data || []);
+        const lowerQ = q.toLowerCase();
+        const filtered = allIssues.filter(issue =>
+            issue.title && issue.title.toLowerCase().includes(lowerQ)
+        );
+        renderCards(filtered);
     } catch (err) {
         console.error('Search error:', err);
         renderCards([]);
