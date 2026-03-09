@@ -202,7 +202,7 @@ function populatePanel(issue) {
 
     // Author — "Opened by author"
     document.getElementById('panelAuthor').textContent =
-        `${isOpen ? 'Opened' : 'Closed'} by ${escHtml(issue.author || 'unknown')}`;
+        `${isOpen ? 'Opened' : 'Closed'} by ${escHtml(formatDisplayName(issue.author) || 'Unknown')}`;
 
     // Date
     document.getElementById('panelDate').textContent = date;
@@ -217,7 +217,7 @@ function populatePanel(issue) {
 
     // Assignee
     document.getElementById('panelAssignee').textContent =
-        issue.assignee ? issue.assignee : 'Unassigned';
+        issue.assignee ? formatDisplayName(issue.author) : 'Unassigned';
 
     // Priority
     const prioEl = document.getElementById('panelPriority');
@@ -232,6 +232,18 @@ function openIcon() {
 function closedIcon() {
     return `<img src="../assets/Closed-Status.png">`;
 }
+
+function formatDisplayName(name) {
+    if (!name) return 'Unknown';
+    return name
+        .replace(/[_-]/g, ' ')           // Replace underscores/dashes with spaces
+        .split(' ')                      // Split into words
+        .map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )                                // Capitalize each word
+        .join(' ');                      // Rejoin with spaces
+}
+
 
 // New Issue
 document.getElementById('newIssueBtn').addEventListener('click', () => {
